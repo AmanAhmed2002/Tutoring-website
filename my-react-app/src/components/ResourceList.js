@@ -38,14 +38,15 @@ function ResourceList() {
             <option value="LINEAR_ALGEBRA">Linear Algebra</option>
           </select>
         )}
-        {/* Add similar conditional dropdown for PHYSICS if needed */}
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
         {resources.map(resource => (
           <div key={resource.id} className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-4 p-4">
-            <h2 className="text-xl font-bold">{resource.title}</h2>
+            <h2 className="text-xl font-bold">
+              <a href={resource.file} target="_blank" rel="noopener noreferrer">{resource.title}</a> {/* Link is now attached to the title */}
+            </h2>
             <p>{resource.description}</p>
-            <a href={resource.link} className="text-blue-500 hover:text-blue-800" target="_blank" rel="noopener noreferrer">Learn more</a>
+            <a href={resource.file} className="text-blue-500 hover:text-blue-800" target="_blank" rel="noopener noreferrer">View PDF</a> {/* Additional explicit link to view the PDF */}
           </div>
         ))}
       </div>

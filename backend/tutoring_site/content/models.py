@@ -13,12 +13,11 @@ class Resource(models.Model):
     ]
 
     title = models.CharField(max_length=200)
-    description = models.TextField()
-    file = models.FileField(upload_to='resources/')  # Assuming file storage for now
-    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES)
-    grade = models.CharField(max_length=20, choices=GRADE_CHOICES, blank=True, null=True)
-    link = models.URLField(blank=True, null=True)  # For external resources
+    description = models.TextField(blank=True, null=True)  # Allows empty descriptions
+    file = models.FileField(upload_to='uploads/', blank=True, null=True)  # Allows resources without a file
+    category = models.CharField(max_length=100, choices=CATEGORY_CHOICES)
+    grade = models.CharField(max_length=100, choices=GRADE_CHOICES, blank=True, null=True)
+    link = models.URLField(blank=True, null=True)  # Optional external link
 
     def __str__(self):
-        return self.title
-
+        return f"{self.category}: {self.title}"  # Improved string representation for easier identification
