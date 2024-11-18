@@ -6,15 +6,16 @@ function ResourceList() {
   const [grade, setGrade] = useState('All');
 
   useEffect(() => {
+    // Initialize query parameters based on category and grade selections
     let url = 'http://127.0.0.1:8000/api/resources/';
+    const params = new URLSearchParams();
     if (category !== 'All') {
-      url += `?category=${category}`;
-      if (grade !== 'All' && category === 'MATH') {
-        url += `&grade=${grade}`;
-      }
+      params.append('category', category);
     }
-
-    fetch(url)
+    if (grade !== 'All' && category !== 'All') {  // Ensure grade is considered only if category is not 'All'
+      params.append('grade', grade);
+    }
+    fetch(`${url}?${params.toString()}`)
       .then(response => response.json())
       .then(data => setResources(data))
       .catch(error => console.error('Error fetching data: ', error));
@@ -24,13 +25,13 @@ function ResourceList() {
     <div>
       <h1 className="text-2xl font-bold text-center my-4">Educational Resources</h1>
       <div className="flex justify-center items-center">
-        <select onChange={e => setCategory(e.target.value)} className="p-2 m-2 border rounded">
+        <select onChange={e => {setCategory(e.target.value); setGrade('All');}} value={category} className="p-2 m-2 border rounded">
           <option value="All">All Categories</option>
           <option value="MATH">Math</option>
           <option value="PHYSICS">Physics</option>
         </select>
         {category === 'MATH' && (
-          <select onChange={e => setGrade(e.target.value)} className="p-2 m-2 border rounded">
+          <select onChange={e => setGrade(e.target.value)} value={grade} className="p-2 m-2 border rounded">
             <option value="All">All Grades</option>
             <option value="GRADE_11">Grade 11</option>
             <option value="GRADE_12">Grade 12</option>
@@ -43,10 +44,10 @@ function ResourceList() {
         {resources.map(resource => (
           <div key={resource.id} className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-4 p-4">
             <h2 className="text-xl font-bold">
-              <a href={resource.file} target="_blank" rel="noopener noreferrer">{resource.title}</a> {/* Link is now attached to the title */}
+              <a href={resource.file} target="_blank" rel="noopener noreferrer">{resource.title}</a>
             </h2>
             <p>{resource.description}</p>
-            <a href={resource.file} className="text-blue-500 hover:text-blue-800" target="_blank" rel="noopener noreferrer">View PDF</a> {/* Additional explicit link to view the PDF */}
+            <a href={resource.file} className="text-blue-500 hover:text-blue-800" target="_blank" rel="noopener noreferrer">View PDF</a>
           </div>
         ))}
       </div>
