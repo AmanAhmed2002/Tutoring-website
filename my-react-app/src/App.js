@@ -22,15 +22,27 @@ function App() {
             element={
               <main className="text-gray-800">
                 {/* Section 1: Welcome */}
-                <section className="bg-customYellow py-16 px-10 text-center">
-                  <h1 className="text-5xl font-heading font-bold text-white bg-customRed py-3 px-6 inline-block rounded-md">
-                    Welcome to Elevate IQ
-                  </h1>
-                  <p className="text-xl font-body font-bold mt-6 max-w-4xl mx-auto leading-relaxed">
-                    Elevate IQ provides affordable and highly effective online tutoring for students
-                    of all ages. With flexible schedules, expert tutors, and personalized learning plans, 
-                    we help students achieve their academic goals and unlock their full potential.
-                  </p>
+                <section className="bg-customYellow py-16 px-10 text-center flex flex-col md:flex-row items-center justify-center">
+                  {/* Image */}
+                  <div className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0">
+                    <img
+                      src={require('./assets/images/online-tutoring-session.webp')}
+                      alt="Online tutoring session"
+                      className="rounded-lg shadow-lg max-w-full h-auto mr-8" // Added right margin
+                    />
+                  </div>
+
+                  {/* Text */}
+                  <div className="w-full md:w-1/2 text-left ml-8"> {/* Added left margin */}
+                    <h1 className="text-5xl font-heading font-bold text-white bg-customRed py-3 px-6 inline-block rounded-md">
+                      Welcome to Elevate IQ
+                    </h1>
+                    <p className="text-xl font-body font-bold mt-6 max-w-4xl mx-auto leading-relaxed">
+                      Elevate IQ provides affordable and highly effective online tutoring for students
+                      of all ages. With flexible schedules, expert tutors, and personalized learning plans, 
+                      we help students achieve their academic goals and unlock their full potential.
+                    </p>
+                  </div>
                 </section>
 
                 {/* Section 2: Why Choose Elevate IQ */}
