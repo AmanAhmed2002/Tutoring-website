@@ -1,0 +1,77 @@
+/* Container for the tree structure */
+.subject-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Each subject branch */
+.subject-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Styling for main subject names */
+.subject-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e63946;
+  text-align: center;
+}
+
+/* Container for sub-branches */
+.branch-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Sub-branch items */
+.branch-item {
+  position: relative;
+  padding: 1rem;
+  border-radius: 50%;
+  background-color: #ffcc00;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.branch-item:hover {
+  transform: scale(1.1);
+}
+
+/* Sub-branch descriptions (hidden by default) */
+.branch-description {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 10px);
+  background-color: white;
+  border-radius: 5px;
+  padding: 0.5rem;
+  display: none;
+  text-align: left;
+  width: 250px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* Show description on hover */
+.branch-item:hover .branch-description {
+  display: block;
+}
+
+/* Styling for sub-branch titles */
+.branch-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #d62828;
+}
