@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GoogleForm from './components/GoogleForm';
 import EducationalResourcesPage from './components/EducationalResourcesPage';
-import SubjectsPage from './components/SubjectsPage'; // New Subjects Page Import
-import DropdownMenu from './components/DropdownMenu'; // Existing Dropdown Menu
+import SubjectsPage from './components/SubjectsPage';
+import PricingPlansPage from './components/PricingPlansPage'; // Importing the Pricing Plans Page
+import DropdownMenu from './components/DropdownMenu';
 import './App.css';
 
 function App() {
@@ -128,9 +129,9 @@ function App() {
                     <a href="/subjects" className="bg-customYellow text-red-600 font-bold py-2 px-4 rounded-md shadow-md hover:bg-yellow-500">
                       Subjects
                     </a>
-                    <button className="bg-customYellow text-red-600 font-bold py-2 px-4 rounded-md shadow-md hover:bg-yellow-500" disabled>
+                    <a href="/pricing-plans" className="bg-customYellow text-red-600 font-bold py-2 px-4 rounded-md shadow-md hover:bg-yellow-500">
                       Pricing Plans
-                    </button>
+                    </a>
                     <a href="/educational-resources" className="bg-customRed text-white font-bold py-2 px-4 rounded-md shadow-md hover:bg-red-700">
                       Educational Resources
                     </a>
@@ -148,6 +149,9 @@ function App() {
 
           {/* Subjects Page */}
           <Route path="/subjects" element={<SubjectsPage />} />
+
+          {/* Pricing Plans Page */}
+          <Route path="/pricing-plans" element={<PricingPlansPage />} />
         </Routes>
       </div>
     </Router>

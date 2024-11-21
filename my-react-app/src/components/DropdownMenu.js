@@ -30,13 +30,16 @@ function DropdownMenu() {
             <Link className="block px-4 py-2 text-red-600 hover:text-white" to="/">Home</Link>
           </li>
           <li className="hover:bg-red-600 hover:text-white">
-            <Link className="block px-4 py-2 text-red-600 hover:text-white" to="/signup">Sign Up</Link>
+            <Link className="block px-4 py-2 text-red-600 hover:text-white" to="/subjects">Subjects</Link>
           </li>
           <li className="hover:bg-red-600 hover:text-white">
             <Link className="block px-4 py-2 text-red-600 hover:text-white" to="/educational-resources">Educational Resources</Link>
           </li>
           <li className="hover:bg-red-600 hover:text-white">
-            <Link className="block px-4 py-2 text-red-600 hover:text-white" to="/subjects">Subjects</Link>
+            <Link className="block px-4 py-2 text-red-600 hover:text-white" to="/pricing-plans">Pricing Plans</Link>
+          </li>
+          <li className="hover:bg-red-600 hover:text-white">
+            <Link className="block px-4 py-2 text-red-600 hover:text-white" to="/signup">Sign Up</Link>
           </li>
         </ul>
       )}

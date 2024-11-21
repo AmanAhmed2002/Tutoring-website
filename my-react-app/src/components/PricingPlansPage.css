@@ -1,0 +1,30 @@
+/* Pricing Plans Page */
+.pricing-page {
+  background-color: #fef9e7;
+}
+
+.plan-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.plan-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Buttons Section */
+.pricing-page a,
+.pricing-page button {
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.pricing-page a:hover,
+.pricing-page button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.pricing-page button:disabled {
+  background-color: #cccccc;
+  color: #999999;
+  cursor: not-allowed;
+}
