@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GoogleForm from './components/GoogleForm';
 import EducationalResourcesPage from './components/EducationalResourcesPage';
-import DropdownMenu from './components/DropdownMenu'; // Import the DropdownMenu component
+import SubjectsPage from './components/SubjectsPage'; // New Subjects Page Import
+import DropdownMenu from './components/DropdownMenu'; // Existing Dropdown Menu
 import './App.css';
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
       <div className="bg-white">
         {/* Header */}
         <header className="bg-red-600 text-white p-4 flex justify-end">
-          <DropdownMenu /> {/* Use the DropdownMenu component here */}
+          <DropdownMenu />
         </header>
 
         {/* Main Routes */}
@@ -45,7 +46,7 @@ function App() {
                   </div>
                 </section>
 
-                {/* About Us Section */}
+                {/* Section 2: About Us */}
                 <section className="py-16 px-10 text-center bg-white">
                   <h2 className="text-4xl font-heading font-bold text-customRed mb-6">About Us</h2>
                   <p className="text-lg font-body leading-relaxed">
@@ -65,7 +66,7 @@ function App() {
                   </p>
                 </section>
 
-                {/* Why Choose Elevate IQ Section */}
+                {/* Section 3: Why Choose Elevate IQ */}
                 <section className="py-16 px-10 text-center bg-white flex flex-col md:flex-row items-center justify-center">
                   {/* Text */}
                   <div className="w-full md:w-1/2 text-left">
@@ -95,7 +96,7 @@ function App() {
                   </div>
                 </section>
 
-                {/* Unique Lesson Plans Section */}
+                {/* Section 4: Unique Lesson Plans */}
                 <section className="bg-customRed py-16 px-10 text-center">
                   <h2 className="text-4xl font-heading font-bold text-customYellow mb-6">Unique Lesson Plans</h2>
                   <p className="text-xl font-body max-w-4xl mx-auto leading-relaxed text-white">
@@ -109,7 +110,7 @@ function App() {
                   </p>
                 </section>
 
-                {/* Services Offered Section */}
+                {/* Section 5: Services Offered */}
                 <section className="bg-white py-16 px-10 text-center">
                   <h2 className="text-4xl font-heading font-bold text-customRed mb-6">Our Services</h2>
                   <p className="text-lg font-body leading-relaxed max-w-4xl mx-auto mb-10">
@@ -119,75 +120,18 @@ function App() {
                     available on our Educational Resources page. Let us help your child excel with expert tutoring 
                     in a wide range of subjects.
                   </p>
-
-                  {/* Subject Icons */}
-                  <div className="flex flex-wrap justify-center gap-6 mb-8">
-                    <div className="flex flex-col items-center">
-                      <div className="bg-customYellow p-6 rounded-full shadow-md">
-                        <span role="img" aria-label="math-icon" className="text-4xl">
-                          ➗
-                        </span>
-                      </div>
-                      <p className="mt-4 text-lg font-body">Math</p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <div className="bg-customYellow p-6 rounded-full shadow-md">
-                        <span role="img" aria-label="science-icon" className="text-4xl">
-                          🔬
-                        </span>
-                      </div>
-                      <p className="mt-4 text-lg font-body">Science</p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <div className="bg-customYellow p-6 rounded-full shadow-md">
-                        <span role="img" aria-label="cs-icon" className="text-4xl">
-                          💻
-                        </span>
-                      </div>
-                      <p className="mt-4 text-lg font-body">Computer Science</p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <div className="bg-customYellow p-6 rounded-full shadow-md">
-                        <span role="img" aria-label="english-icon" className="text-4xl">
-                          📚
-                        </span>
-                      </div>
-                      <p className="mt-4 text-lg font-body">English</p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <div className="bg-customYellow p-6 rounded-full shadow-md">
-                        <span role="img" aria-label="robotics-icon" className="text-4xl">
-                          🤖
-                        </span>
-                      </div>
-                      <p className="mt-4 text-lg font-body">Robotics</p>
-                    </div>
-                  </div>
-
                   {/* Buttons */}
                   <div className="flex flex-wrap justify-center gap-4">
-                    <a
-                      href="/signup"
-                      className="bg-customRed text-white font-bold py-2 px-4 rounded-md shadow-md hover:bg-red-700"
-                    >
+                    <a href="/signup" className="bg-customRed text-white font-bold py-2 px-4 rounded-md shadow-md hover:bg-red-700">
                       Sign Up Now
                     </a>
-                    <button
-                      className="bg-customYellow text-red-600 font-bold py-2 px-4 rounded-md shadow-md hover:bg-yellow-500"
-                      disabled
-                    >
+                    <a href="/subjects" className="bg-customYellow text-red-600 font-bold py-2 px-4 rounded-md shadow-md hover:bg-yellow-500">
                       Subjects
-                    </button>
-                    <button
-                      className="bg-customYellow text-red-600 font-bold py-2 px-4 rounded-md shadow-md hover:bg-yellow-500"
-                      disabled
-                    >
+                    </a>
+                    <button className="bg-customYellow text-red-600 font-bold py-2 px-4 rounded-md shadow-md hover:bg-yellow-500" disabled>
                       Pricing Plans
                     </button>
-                    <a
-                      href="/educational-resources"
-                      className="bg-customRed text-white font-bold py-2 px-4 rounded-md shadow-md hover:bg-red-700"
-                    >
+                    <a href="/educational-resources" className="bg-customRed text-white font-bold py-2 px-4 rounded-md shadow-md hover:bg-red-700">
                       Educational Resources
                     </a>
                   </div>
@@ -196,9 +140,14 @@ function App() {
             }
           />
 
-          {/* Other Pages */}
+          {/* Sign-Up Page */}
           <Route path="/signup" element={<GoogleForm />} />
+
+          {/* Educational Resources Page */}
           <Route path="/educational-resources" element={<EducationalResourcesPage />} />
+
+          {/* Subjects Page */}
+          <Route path="/subjects" element={<SubjectsPage />} />
         </Routes>
       </div>
     </Router>
