@@ -11,7 +11,7 @@ class ResourceViewSet(viewsets.ModelViewSet):
     queryset = Resource.objects.all()
     serializer_class = ResourceSerializer
     filter_backends = (DjangoFilterBackend,)  # Use DjangoFilterBackend
-    filterset_fields = ['category', 'grade']  # Specify which fields should be filterable
+    filterset_fields = ['category', 'grade', 'is_video']  # Added 'is_video' for filtering resources by type
 
 @csrf_exempt
 def contact_us(request):
@@ -44,6 +44,38 @@ def contact_us(request):
             )
 
             return JsonResponse({"message": "Email sent successfully!"}, status=200)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+
+    return JsonResponse({"error": "Invalid request method."}, status=400)
+
+@csrf_exempt
+def get_videos(request):
+    """
+    Handles a request to fetch all videos or filter by category and grade.
+    """
+    if request.method == "GET":
+        category = request.GET.get('category', None)
+        grade = request.GET.get('grade', None)
+
+        try:
+            queryset = Resource.objects.filter(is_video=True)  # Only fetch resources marked as videos
+
+            if category:
+                queryset = queryset.filter(category=category)
+            if grade:
+                queryset = queryset.filter(grade=grade)
+
+            videos = [
+                {
+                    "title": video.title,
+                    "description": video.description,
+                    "link": video.video_url
+                }
+                for video in queryset
+            ]
+            return JsonResponse({"videos": videos}, status=200)
+
         except Exception as e:
             return JsonResponse({"error": str(e)}, status=500)
 

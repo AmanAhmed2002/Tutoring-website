@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from 'react';
 
-function ResourceList() {
+function ResourceList({ isVideo }) {
   const [resources, setResources] = useState([]);
   const [category, setCategory] = useState('All');
   const [grade, setGrade] = useState('All');
 
   useEffect(() => {
-    // Initialize query parameters based on category and grade selections
+    // Initialize query parameters based on category, grade, and isVideo selections
     let url = 'http://127.0.0.1:8000/api/resources/';
     const params = new URLSearchParams();
     if (category !== 'All') {
       params.append('category', category);
     }
-    if (grade !== 'All' && category !== 'All') {  // Ensure grade is considered only if category is not 'All'
+    if (grade !== 'All' && category !== 'All') {
       params.append('grade', grade);
     }
+    params.append('is_video', isVideo); // Add the filter for video or note
     fetch(`${url}?${params.toString()}`)
       .then(response => response.json())
       .then(data => setResources(data))
       .catch(error => console.error('Error fetching data: ', error));
-  }, [category, grade]);
+  }, [category, grade, isVideo]);
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-center my-4">Educational Resources</h1>
       <div className="flex justify-center items-center">
-        <select onChange={e => {setCategory(e.target.value); setGrade('All');}} value={category} className="p-2 m-2 border rounded">
+        <select onChange={e => { setCategory(e.target.value); setGrade('All'); }} value={category} className="p-2 m-2 border rounded">
           <option value="All">All Categories</option>
           <option value="MATH">Math</option>
           <option value="PHYSICS">Physics</option>
@@ -44,10 +44,18 @@ function ResourceList() {
         {resources.map(resource => (
           <div key={resource.id} className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl m-4 p-4">
             <h2 className="text-xl font-bold">
-              <a href={resource.file} target="_blank" rel="noopener noreferrer">{resource.title}</a>
+              {isVideo ? (
+                <a href={resource.video_url} target="_blank" rel="noopener noreferrer">{resource.title}</a>
+              ) : (
+                <a href={resource.file} target="_blank" rel="noopener noreferrer">{resource.title}</a>
+              )}
             </h2>
             <p>{resource.description}</p>
-            <a href={resource.file} className="text-blue-500 hover:text-blue-800" target="_blank" rel="noopener noreferrer">View PDF</a>
+            {isVideo ? (
+              <a href={resource.video_url} className="text-blue-500 hover:text-blue-800" target="_blank" rel="noopener noreferrer">Watch Video</a>
+            ) : (
+              <a href={resource.file} className="text-blue-500 hover:text-blue-800" target="_blank" rel="noopener noreferrer">View PDF</a>
+            )}
           </div>
         ))}
       </div>

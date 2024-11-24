@@ -19,5 +19,9 @@ class Resource(models.Model):
     grade = models.CharField(max_length=100, choices=GRADE_CHOICES, blank=True, null=True)
     link = models.URLField(blank=True, null=True)  # Optional external link
 
+    # New fields for videos
+    is_video = models.BooleanField(default=False)  # Indicates if this resource is a video
+    video_url = models.URLField(blank=True, null=True)  # YouTube or external video link
+
     def __str__(self):
-        return f"{self.category}: {self.title}"  # Improved string representation for easier identification
+        return f"{self.category}: {self.title} ({'Video' if self.is_video else 'Note'})"  # Improved representation
