@@ -128,5 +128,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CORS_ALLOW_ALL_ORIGINS = True
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Gmail's SMTP server
+EMAIL_PORT = 587  # Port for TLS
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False  # Set to True only if you're using port 465
+EMAIL_HOST_USER = 'elevateiqtutor@gmail.com'  # Your Gmail address
+EMAIL_HOST_PASSWORD = 'utoc ytyb txxr yjqt'  # Your Gmail password or app password
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

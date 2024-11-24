@@ -3,14 +3,29 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GoogleForm from './components/GoogleForm';
 import EducationalResourcesPage from './components/EducationalResourcesPage';
 import SubjectsPage from './components/SubjectsPage';
-import PricingPlansPage from './components/PricingPlansPage'; // Importing the Pricing Plans Page
+import PricingPlansPage from './components/PricingPlansPage';
+import ContactUsPage from './components/ContactUsPage'; // Importing the Contact Us Page
 import DropdownMenu from './components/DropdownMenu';
 import './App.css';
+
+function ContactUsSidebar() {
+  return (
+    <div className="fixed bottom-5 right-5">
+      <a
+        href="/contact-us"
+        className="bg-red-600 text-white font-bold py-2 px-4 rounded-full shadow-lg hover:bg-red-700 transition"
+        title="Contact Us"
+      >
+        Contact Us
+      </a>
+    </div>
+  );
+}
 
 function App() {
   return (
     <Router>
-      <div className="bg-white">
+      <div className="bg-white relative">
         {/* Header */}
         <header className="bg-red-600 text-white p-4 flex justify-end">
           <DropdownMenu />
@@ -152,7 +167,13 @@ function App() {
 
           {/* Pricing Plans Page */}
           <Route path="/pricing-plans" element={<PricingPlansPage />} />
+
+          {/* Contact Us Page */}
+          <Route path="/contact-us" element={<ContactUsPage />} />
         </Routes>
+
+        {/* Contact Us Sidebar */}
+        <ContactUsSidebar />
       </div>
     </Router>
   );
