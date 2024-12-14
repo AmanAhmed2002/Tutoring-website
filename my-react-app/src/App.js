@@ -5,7 +5,7 @@ import EducationalResourcesPage from './components/EducationalResourcesPage';
 import SubjectsPage from './components/SubjectsPage';
 import PricingPlansPage from './components/PricingPlansPage';
 import ContactUsPage from './components/ContactUsPage'; // Importing the Contact Us Page
-import DropdownMenu from './components/DropdownMenu';
+import DropdownMenu from './components/DropdownMenu'; // Updated navigation component
 import './App.css';
 
 function ContactUsSidebar() {
@@ -26,10 +26,8 @@ function App() {
   return (
     <Router>
       <div className="bg-white relative">
-        {/* Header */}
-        <header className="bg-red-600 text-white p-4 flex justify-end">
-          <DropdownMenu />
-        </header>
+        {/* Horizontal Navigation Bar */}
+        <DropdownMenu />
 
         {/* Main Routes */}
         <Routes>
