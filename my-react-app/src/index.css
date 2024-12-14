@@ -37,25 +37,46 @@ h1, h2, h3 {
   margin: 0 1rem;
 }
 
-/* New styles for the horizontal navigation bar */
-nav {
+/* Contact Us Sidebar Styling */
+.fixed {
+  position: fixed;
+}
+
+.right-5 {
+  right: -20px; /* Moves the oval further to the right, slightly off the screen */
+}
+
+.top-1\/2 {
+  top: 50%; /* Center vertically */
+}
+
+.transform {
+  transform: translateY(-50%); /* Adjust for true centering */
+}
+
+a.rounded-full {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #b91c1c; /* Matches red theme */
-  padding: 0.5rem 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-nav a {
-  font-family: 'Poppins', sans-serif; /* Matches heading font */
+  text-align: center;
+  border-radius: 50%; /* Oval shape */
+  width: 200px; /* Bigger oval width */
+  height: 100px; /* Bigger oval height */
+  font-size: 16px; /* Adjusted text size */
+  font-weight: bold;
+  background-color: #b91c1c; /* Red background */
   color: white;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  transition: background-color 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: background-color 0.3s ease;
+  transform: rotate(-90deg); /* Rotates the oval */
 }
 
-nav a:hover {
+a.rounded-full:hover {
   background-color: #991b1b; /* Slightly darker red on hover */
-} 
+}
+
+a.rounded-full span {
+  writing-mode: vertical-lr; /* Rotates the text 90 degrees counterclockwise */
+  transform: rotate(-90deg); /* Ensures alignment with the oval's orientation */
+  white-space: nowrap; /* Prevents text wrapping */
+}

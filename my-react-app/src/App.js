@@ -8,20 +8,6 @@ import ContactUsPage from './components/ContactUsPage'; // Importing the Contact
 import DropdownMenu from './components/DropdownMenu'; // Updated navigation component
 import './App.css';
 
-function ContactUsSidebar() {
-  return (
-    <div className="fixed bottom-5 right-5">
-      <a
-        href="/contact-us"
-        className="bg-red-600 text-white font-bold py-2 px-4 rounded-full shadow-lg hover:bg-red-700 transition"
-        title="Contact Us"
-      >
-        Contact Us
-      </a>
-    </div>
-  );
-}
-
 function App() {
   return (
     <Router>
@@ -169,9 +155,6 @@ function App() {
           {/* Contact Us Page */}
           <Route path="/contact-us" element={<ContactUsPage />} />
         </Routes>
-
-        {/* Contact Us Sidebar */}
-        <ContactUsSidebar />
       </div>
     </Router>
   );
