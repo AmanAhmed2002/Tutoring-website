@@ -1,0 +1,75 @@
+/* Parent container styles */
+.menu {
+  position: relative;
+}
+
+.menu-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  align-items: center; /* Vertically aligns all items */
+  height: 60px; /* Matches the menu bar height */
+}
+
+.menu-item {
+  position: relative;
+  display: flex;
+  align-items: center; /* Ensures vertical alignment for all items */
+}
+
+.menu-link {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 0 20px; /* Horizontal padding */
+  background-color: red;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 60px; /* Matches the menu height */
+  vertical-align: middle;
+}
+
+.menu-link:hover {
+  background-color: darkred;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 5px); /* Position dropdown below the button */
+  left: 0;
+  min-width: 200px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 1000;
+  display: none; /* Hidden by default */
+  padding: 10px 0;
+}
+
+/* Dropdown link styles */
+.dropdown-link {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.dropdown-link:hover {
+  background-color: lightgray;
+}
+
+/* Ensure dropdown stays visible when hovering over menu-item or dropdown */
+.menu-item:hover .dropdown,
+.menu-item .dropdown:hover {
+  display: block;
+}
+
+/* Optional: Add a uniform height to all menu items, even those with dropdowns */
+.menu-item {
+  height: 60px; /* Matches menu bar height */
+}
