@@ -37,6 +37,13 @@ h1, h2, h3 {
   margin: 0 1rem;
 }
 
+/* Fix the alignment of the "Educational Resources" text */
+.menu-link {
+  display: inline-flex; /* Align inline elements properly */
+  align-items: center; /* Vertically center the text */
+  justify-content: center; /* Horizontally center the text */
+}
+
 /* Contact Us Sidebar Styling */
 .fixed {
   position: fixed;

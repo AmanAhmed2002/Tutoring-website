@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GoogleForm from './components/GoogleForm';
 import EducationalResourcesPage from './components/EducationalResourcesPage';
+import MathResourcesPage from './components/MathResourcesPage'; // Importing Math Resources Page
+import PhysicsResourcesPage from './components/PhysicsResourcesPage'; // Importing Physics Resources Page
 import SubjectsPage from './components/SubjectsPage';
 import PricingPlansPage from './components/PricingPlansPage';
 import ContactUsPage from './components/ContactUsPage'; // Importing the Contact Us Page
@@ -125,12 +127,6 @@ function App() {
                     <a href="/signup" className="bg-customRed text-white font-bold py-2 px-4 rounded-md shadow-md hover:bg-red-700">
                       Sign Up Now
                     </a>
-                    <a href="/subjects" className="bg-customYellow text-red-600 font-bold py-2 px-4 rounded-md shadow-md hover:bg-yellow-500">
-                      Subjects
-                    </a>
-                    <a href="/pricing-plans" className="bg-customYellow text-red-600 font-bold py-2 px-4 rounded-md shadow-md hover:bg-yellow-500">
-                      Pricing Plans
-                    </a>
                     <a href="/educational-resources" className="bg-customRed text-white font-bold py-2 px-4 rounded-md shadow-md hover:bg-red-700">
                       Educational Resources
                     </a>
@@ -140,14 +136,11 @@ function App() {
             }
           />
 
-          {/* Sign-Up Page */}
-          <Route path="/signup" element={<GoogleForm />} />
-
-          {/* Educational Resources Page */}
+          {/* Educational Resources Pages */}
           <Route path="/educational-resources" element={<EducationalResourcesPage />} />
-
-          {/* Subjects Page */}
-          <Route path="/subjects" element={<SubjectsPage />} />
+          <Route path="/educational-resources/math" element={<MathResourcesPage />} />
+          <Route path="/educational-resources/physics" element={<PhysicsResourcesPage />} />
+          <Route path="/educational-resources/subjects" element={<SubjectsPage />} />
 
           {/* Pricing Plans Page */}
           <Route path="/pricing-plans" element={<PricingPlansPage />} />

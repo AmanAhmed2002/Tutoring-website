@@ -6,7 +6,6 @@ function DropdownMenu() {
     <nav className="bg-red-600 text-white py-4 shadow-md">
       <div className="container mx-auto flex justify-center space-x-6 relative">
         <Link className="text-white hover:bg-red-700 py-2 px-4 rounded-md" to="/">Home</Link>
-        <Link className="text-white hover:bg-red-700 py-2 px-4 rounded-md" to="/subjects">Subjects</Link>
         <div 
           className="menu-item relative group"
           onMouseEnter={(e) => e.currentTarget.classList.add('hovered')}
@@ -16,6 +15,9 @@ function DropdownMenu() {
             Educational Resources
           </button>
           <div className="dropdown absolute bg-red-700 text-white shadow-lg rounded-md hidden group-hover:block">
+            <Link className="dropdown-link block px-4 py-2 hover:bg-red-800" to="/educational-resources/subjects">
+              Subjects
+            </Link>
             <Link className="dropdown-link block px-4 py-2 hover:bg-red-800" to="/educational-resources/math">
               Math Resources
             </Link>
