@@ -3,35 +3,44 @@ import React, { useState, useEffect } from 'react';
 function ResourceList({ contentType, category, showGrades = true }) {
   const [resources, setResources] = useState([]);
   const [grade, setGrade] = useState('All');
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const base = 'https://74123650d73d.ngrok-free.app';
+      const endpoint = '/api/resources/';
+      const params = new URLSearchParams({
+        category: category,
+        is_video: contentType === 'Videos',
+        format: 'json',  // Force JSON
+        grade: showGrades && grade !== 'All' ? grade : ''
+      });
 
-  useEffect(() => {
-    const base = 'https://7a55177fed92.ngrok-free.app';
-    const endpoint = '/api/resources/';
-    const params = new URLSearchParams();
-    params.append('category', category);
-    if (showGrades && grade !== 'All') {
-      params.append('grade', grade);
-    }
-    params.append('is_video', contentType === 'Videos');
-    params.append('format', 'json');
-    
-    const url = `${base}${endpoint}?${params.toString()}`;
-    
-    fetch(url, { 
-      headers: { 
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+      const response = await fetch(`${base}${endpoint}?${params}`, {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'  // Helps identify AJAX
+        },
+        credentials: 'include'  // For CSRF/cookies if needed
+      });
+
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error("Response wasn't JSON");
       }
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => setResources(data))
-      .catch(error => console.error('Error fetching data:', error));
-  }, [grade, contentType, category, showGrades]);
+
+      const data = await response.json();
+      setResources(data);
+    } catch (error) {
+      console.error('Fetch error:', error);
+      // Optional: Set error state for UI feedback
+    }
+  };
+
+  fetchData();
+}, [grade, contentType, category, showGrades]);
 
   return (
     <div>
