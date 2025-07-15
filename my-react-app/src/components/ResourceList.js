@@ -15,7 +15,7 @@ function ResourceList({ contentType, category, showGrades = true }) { // Added s
     }
     params.append('is_video', contentType === 'Videos'); // Filter between videos and notes
 
-    fetch(`${url}?${params.toString()}`)
+    fetch(`${url}?${url}?${params.toString()}&format=json`)
       .then(response => response.json())
       .then(data => setResources(data))
       .catch(error => console.error('Error fetching data: ', error));
