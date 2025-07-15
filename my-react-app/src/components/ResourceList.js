@@ -6,7 +6,7 @@ function ResourceList({ contentType, category, showGrades = true }) { // Added s
 
   useEffect(() => {
     // Build query parameters based on grade, contentType, and category
-    let url = 'https://ad222c0ded83.ngrok-free.app/api/resources/';
+    let url = 'http://127.0.0.1:8000/api/resources/';
     const params = new URLSearchParams();
 
     params.append('category', category); // Pass category filter (e.g., MATH or PHYSICS)
