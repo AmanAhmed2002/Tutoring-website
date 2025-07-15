@@ -5,7 +5,7 @@ function ResourceList({ contentType, category, showGrades = true }) {
   const [grade, setGrade] = useState('All');
 
   useEffect(() => {
-    const base = 'https://dae05acd63e2.ngrok-free.app';
+    const base = 'https://7a55177fed92.ngrok-free.app';
     const endpoint = '/api/resources/';
     const params = new URLSearchParams();
     params.append('category', category);
