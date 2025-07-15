@@ -5,7 +5,7 @@ function ResourceList({ contentType, category, showGrades = true }) {
   const [grade, setGrade] = useState('All');
 
   useEffect(() => {
-    const base = ' https://dae05acd63e2.ngrok-free.app';
+    const base = 'https://dae05acd63e2.ngrok-free.app';
     const endpoint = '/api/resources/';
     const params = new URLSearchParams();
     params.append('category', category);
@@ -14,11 +14,23 @@ function ResourceList({ contentType, category, showGrades = true }) {
     }
     params.append('is_video', contentType === 'Videos');
     params.append('format', 'json');
+    
     const url = `${base}${endpoint}?${params.toString()}`;
-    fetch(url, { headers: { 'Accept': 'application/json' } })
-      .then(response => response.json())
+    
+    fetch(url, { 
+      headers: { 
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(data => setResources(data))
-      .catch(error => console.error('Error fetching data: ', error));
+      .catch(error => console.error('Error fetching data:', error));
   }, [grade, contentType, category, showGrades]);
 
   return (
