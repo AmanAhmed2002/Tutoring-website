@@ -21,7 +21,7 @@ const ContactUsPage = () => {
     setStatus('Sending...');
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/contact/', {
+      const response = await fetch('https://a1c4f113a562.ngrok-free.app/api/contact/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
